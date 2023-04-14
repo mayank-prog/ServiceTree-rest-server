@@ -20,7 +20,7 @@ exports.Login = async (req, res) => {
                      }).catch((err)=> {
                          return res.status(500).json({error: err});
                     })
-                    //sendOtpBytwilio(phone,otp);
+                    sendOtpBytwilio(phone,otp);
                     return res.status(200).json({error: "User already exist",otp:otp});
                 }
                 else {
@@ -28,7 +28,7 @@ exports.Login = async (req, res) => {
                 user.save().then(()=>{
                     // return res.status(422).json({error:"User  added"});
                 }).catch((err)=> {return res.status(500).json({error: "not added user"});})
-                //sendOtpBytwilio(phone,otp);
+                sendOtpBytwilio(phone,otp);
                 return res.json({Data: "i am a new user",otp:otp});
             }
             }).catch((err)=>{console.error(err);})
